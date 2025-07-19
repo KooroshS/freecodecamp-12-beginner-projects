@@ -68,3 +68,33 @@ def solve_sudoku(puzzle):
 
     # step 6: if none of the numbers that we try work, then this puzzle is UNSOLVABLE!
     return False
+
+def print_puzzle(puzzle):
+    for row in puzzle:
+        print(" ".join(str(val) if val != -1 else "." for val in row))
+    print()
+
+if __name__ == "__main__":
+    #  -1 marks empty cells
+    puzzle = [
+        [5, 3, -1,   -1, 7, -1,   -1, -1, -1],
+        [6, -1, -1,   1, 9, 5,    -1, -1, -1],
+        [-1, 9, 8,   -1, -1, -1,   -1, 6, -1],
+
+        [8, -1, -1,   -1, 6, -1,   -1, -1, 3],
+        [4, -1, -1,   8, -1, 3,    -1, -1, 1],
+        [7, -1, -1,   -1, 2, -1,   -1, -1, 6],
+
+        [-1, 6, -1,   -1, -1, -1,   2, 8, -1],
+        [-1, -1, -1,   4, 1, 9,    -1, -1, 5],
+        [-1, -1, -1,   -1, 8, -1,   -1, 7, 9],
+    ]
+
+    print("Before:\n")
+    print_puzzle(puzzle)
+
+    if solve_sudoku(puzzle):
+        print("Solved:\n")
+        print_puzzle(puzzle)
+    else:
+        print("No solution exists for that puzzle.")
